@@ -1,5 +1,39 @@
+/* Diseño de referencia: https://xd.adobe.com/view/2a361805-1952-471d-8974-41569309217f-7f65/screen/d18f23e4-dc15-4744-bed9-bc904681bcc5/specs/ */
+:root {
+    --blanco: #FFFFFF;
+    --azulClaro: #3E578E;
+    --azul: #184E97;
+    --azulOscuro: #11294A;
+    --grisClaro: #ECF0F1;
+    --gris: #D6DBDF;
+    --grisOscuro: #464646;
+    --turquesa: #0DBEB0;
+    --negro: #121212;
+    --negroClaro: #282828;
+}
+
+
 .logo small{
     font-size: 10px;
     display: block;
     margin-top: -4px;
+}
+
+.topbar {
+    height: 75px;
+    background-color: var(--azul);
+    color: var(--blanco);
+    position: relative;
+    /* Para a futuro colocar elementos superpuestos, como la bolita roja de notificación */
+    border-bottom: 7px solid var(--turquesa);
+    /* Línea inferior decorativa */
+}
+
+.topbar i {
+    /* Iconos de fontawesome blancos */
+    color: var(--blanco);
+}
+
+.cambio-fuente{
+    font-size: 18px;
 }

@@ -14,27 +14,74 @@
 
     <!-- Estilos propios-->
     <link rel="stylesheet" href="css/ponadis.css">
+    <!-- TODO: Sobreescribir el estilo de la clase border -->
+    
 </head>
 
 <body>
     <!-- TOBAR (barra superior) -->
     <div class="container-fluid topbar"> 
-        <div class="row"> <!-- Fila 1 -->
-            <div class="col-3" > <!-- Columna 1 -->
-                <a href="" class="text-decoration-none logo"> <span>Sicid <small> intranet </small></span>
+        <div class="row d-flex align-items-center h-100"> <!-- Fila 1 -->
+            <!--h-100: Hace que el row use toda la altura del topbar -->
+            <div class="col-3 text-start" > <!-- Columna 1 -->
+                <a href="" class="text-decoration-none text-white logo"> <span>Sicid <small> intranet </small></span>
                 </a>
 
             </div>
 
-            <div class="col-3"> <!-- Columna 2 -->
-                <p>
-                    PONADIS -<span class="visually-hidden">Rol:</span> Administrador
+            <div class="col-6"> <!-- Columna 2: Usuario / rol-->
+                <p class="mb-0">
+                    <!--mb-0: en el <p>  elimina el margen inferior que por defecto tienen los p-->
+                    
+                    <strong>PONADIS</strong> - <span class="visually-hidden">Rol:</span> Administrador
                 </p>
 
-                <!-- Tarea moral: Dar el efecto visual del diseño al <p> del tipo de usuario -->
+                <!-- Tarea moral 1: Dar el efecto visual del diseño al <p> del tipo de usuario -->
+                <!-- Tarea moral 2: Investigar propiedades de Bootstrap para dar el efecto visual al tipo de usuario -->
 
             </div>
-            <div class="col-3"> <!-- Columna 3 -->
+            <div class="col-3 text-end"> <!-- Columna 3: Otras opciones -->
+                <div class="row d-flex align-items-center justify-content-around">
+                    <div class="col-3 d-flex align-items-center justify-content-end"> <!-- Opciones: - A + -->
+                        <button class="btn " aria-label="Disminuir el tamaño de la fuente">
+                            <i class="fa-solid fa-minus border rounded-1 p-2" aria-hidden="true"></i>                      
+                        </button>
+
+                        <!-- Ejercicio: Hacer accesibles los botones de cambiar la fuente y aumentar el tamaño de fuente -->
+                        <button class="btn" aria-label="Cambiar la fuente">
+                            <i class="fa-solid fa-a border rounded-1 p-2 cambio-fuente" aria-hidden="true"></i>
+                            <!-- TODO: Efecto de los botones -->
+                        </button>
+
+                        <button class="btn" aria-label="Aumentar el tamaño de la fuente">
+                            <i class="fa-solid fa-plus border rounded-1 p-2" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <div class="col-1"> <!-- Paleta de colores -->
+                        <!-- Ejercicio: Completar las columnas para notificaciones y paleta de colores -->
+                         <button class="btn" aria-label="Cambiar el contraste / paleta de colores">
+                            <i class="fa-solid fa-circle-half-stroke border rounded-1 p-2" aria-hidden="true"></i>
+                        </button>
+
+                    </div>
+                    <div class="col-1"> <!-- Notificaciones -->
+                        <button class="btn" aria-label="Ver notificaciones">
+                            <i class="fa-solid fa-bell" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <!-- Ejercicio: Cambiar la columna MC por las opciones Registrar usuario / iniciar sesión -->
+                    <div class="col-2 ms-1"> 
+                        <a href="" class="text-decoration-none text-white mb-0 btn">Iniciar sesión</a>
+                        
+                    </div>
+                    <div class="col-2"> 
+                        <a href="crear-cuenta.html" class="text-decoration-none text-white mb-0 p-1 btn btn-outline-secondary">Crear cuenta</a>
+                        
+                    </div>
+
+                    <!-- Ejercicio: Crear un formulario para registrar usuario y un formulario para iniciar sesión -->
+                </div>
 
             </div>
         </div>
