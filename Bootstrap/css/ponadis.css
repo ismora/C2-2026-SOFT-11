@@ -115,3 +115,17 @@ body{
     height: 27px;
     border-radius: 50%;
 }
+
+
+@media(prefers-color-scheme: dark){
+    body{
+        background-color: var(--negro);
+        color: var(--gris);
+    }
+
+    .topbar{
+        background-color: var(--negroClaro);
+        border-bottom: 1px solid var(--grisClaro);
+    } 
+
+}
