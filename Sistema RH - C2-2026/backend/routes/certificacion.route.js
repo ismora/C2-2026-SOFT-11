@@ -2,80 +2,80 @@ const express = require("express");
 const router = express.Router();
 const Certificacion = require("../models/certificacion.model");
 
-// Guardar una certificación 
 router.post("/", async (req, res) => {
     try {
-        const { nombre, institucion, vigencia } = req.body;
-
-        // Validar los campos obligatorios 
+        const { nombre, institucion, descripcion, vigencia } = req.body;
+        
+        // Validar campos obligatorios
         if (!nombre || !institucion) {
-            return res.status(400).json({ mensajeError: "El nombre de la certificación y la institución son obligatorios." });
+            return res.status(400).json({mensajeError: "El nombre y la institución son obligatorios."});
         }
 
-        // Validar la vigencia 
+        // Validar la vigencia
         if (vigencia) {
             const { expira, fechaExpiracion } = vigencia;
 
             // Si expira, la fecha es obligatoria
             if (expira && !fechaExpiracion) {
-                return res.status(400).json({ mensajeError: "Debe indicar la fecha de expiración." });
+                return res.status(400).json({mensajeError: "Debe indicar la fecha de expiración de la certificación." });
             }
         }
+            const nuevaCertificacion = new Certificacion(req.body);
+            await nuevaCertificacion.save();
+            res.status(201).json(nuevaCertificacion);
+        } catch (error) {
+            res.status(400).json({ msj: "Error al crear la certificación", error });
+        }
+    });
 
-        const nuevaCertificacion = new Certificacion(req.body);
-        await nuevaCertificacion.save();
-        res.status(201).json(nuevaCertificacion);
-    } catch (error) {
-        return res.status(400).json({ mensajeError: "Error al crear la certificación.", error});
-    }
-});
-
-/* 
+/*
 http://localhost:3000/certificaciones
+{
+"nombre": "Python",
+"institucion": "CENFOTEC"
+} 
 
 {
-  "nombre": "React",
-  "institucion": "CENFOTEC"
-}
-
-{
-  "nombre": "Buenas prácticas en ciberseguridad",
-  "institucion": "Empresa X",
+  "nombre": "Buenas prácticas de ciberseguridad",
+  "institucion": "Empresa X", 
   "vigencia": {
-    "expira": true,
-    "fechaExpiracion": "2027-06-25"
+  "expira": true, 
+  "fechaExpiracion": "2028-06-30"
   }
 }
-  
+
 */
 
-router.get("/", async(req, res) =>{
-    try{
+router.get("/", async (req, res) => {
+    try {
         const certificaciones = await Certificacion.find();
         res.json(certificaciones);
-    }catch(error){
-        res.status(500).json({mensajeError: "Error al obtener las certificaciones."});
+    } catch (error) {
+        res.status(500).json({ msj: "Error al obtener las certificaciones", error });
     }
 });
 
 // http://localhost:3000/certificaciones
 
-// Primeras N certificaciones registradas 
-router.get("/primeras/:cantidad", async(req, res) =>{
-    try{
+router.get("/primeras/:cantidad", async (req, res) => {
+    try {
         const cantidad = parseInt(req.params.cantidad);
 
-        // Validar cantidad > 0
-        if(isNaN(cantidad) || cantidad <= 0){
-            res.status(400).json({mensajeError: "La cantidad debe ser mayor a 0."});
+        if (isNaN(cantidad) || cantidad <= 0) {
+            return res.status(400).json({msj: "La cantidad debe ser un número mayor a 0."});
         }
 
-        const certificaciones = await Certificacion.find().sort({_id: 1}).limit(cantidad);
+        const certificaciones = await Certificacion
+            .find()
+            .sort({ _id: 1 })
+            .limit(cantidad);
+
         res.json(certificaciones);
-    }catch(error){
-        res.status(500).json({mensajeError: "Error al obtener las certificaciones."});
+    } catch (error) {
+        res.status(500).json({msj: "Error al obtener las certificaciones", error });
     }
 });
+
 // http://localhost:3000/certificaciones/primeras/3
 
 router.get("/top-instituciones/:top", async (req, res) => {

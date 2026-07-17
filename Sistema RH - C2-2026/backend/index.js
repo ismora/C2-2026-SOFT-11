@@ -9,8 +9,14 @@ const app = express(); //Crear una instancia de express
 const PORT = process.env.PORT || 3000; //Usar el puerto indicado en .env o si no se indica usar el puerto 3000
 
 // Importación de rutas
+const atestadoRoute = require("./routes/atestado.route");
 const certificacionRoute = require("./routes/certificacion.route");
+const departamentoRoute = require("./routes/departamento.route");
 const empleadoRoute = require("./routes/empleado.route");
+const evaluacionRoute = require("./routes/evaluacion.route");
+const proyectoRoute = require("./routes/proyecto.route");
+const empleadoDepartamentoRoute = require("./routes/empleado-departamento.route");
+const estadisticasRoute = require("./routes/estadisticas.route");
 
 
 app.use(express.json());//Habilita el manejo de JSON en las peticiones
@@ -24,8 +30,14 @@ mongoose.connect(process.env.MONGODB_URI)
 .catch(error => console.log('Ocurrió un error al conectarse con MongoDB: ', error));
 
 // Rutas
+app.use("/atestados", atestadoRoute);
 app.use("/certificaciones", certificacionRoute);
+app.use("/departamentos", departamentoRoute);
 app.use("/empleados", empleadoRoute);
+app.use("/evaluaciones", evaluacionRoute);
+app.use("/proyectos", proyectoRoute);
+app.use("/empleados-departamento", empleadoDepartamentoRoute);
+app.use("/estadisticas", estadisticasRoute);
 
 
 app.get('/', (req,res)=> {

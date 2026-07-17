@@ -1,0 +1,180 @@
+:root {
+    --azul: #164a98;
+    --celeste: #9cc8ff;
+    --naranja: #f05323;
+    --fuscia: #c81f66;
+    --rojo: #d2232a;
+    --verde: #4aa147;
+    --verdeOscuro: #00734a;
+    --celesteOscuro: #2b93d1;
+    --amarillo: #fff200;
+    --amarilloOscuro: #ffc63e;
+    --morado: #712c86;
+    --turquesa: #00928d;
+    --grisOscuro: #7c7b75;
+    --gris: #d2d2d2;
+    font-family: "Century Gothic", "Futura", "Arial", sans-serif;
+}
+
+
+
+/* Contenedor principal para centrar el contenido */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.tabla-personalizada {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tabla-personalizada thead tr {
+    background-color: var(--azul);
+    color: white;
+    font-weight: bold;
+}
+
+.tabla-personalizada th,
+.tabla-personalizada td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--gris);
+}
+
+.tabla-personalizada tbody tr:hover {
+    background-color: var(--celeste);
+    cursor: pointer;
+}
+
+.tabla-personalizada tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.form-registro {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: var(--azul);
+    margin-bottom: 30px;
+    font-weight: 600;
+    border-bottom: 3px solid var(--celeste);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.form-registro div {
+    margin-bottom: 20px;
+}
+
+.form-registro label {
+    display: block;
+    font-weight: 600;
+    color: var(--grisOscuro);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.form-registro input[type="text"],
+.form-registro input[type="email"],
+.form-registro input[type="password"],
+.form-registro input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--gris);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    background-color: #fafafa;
+}
+
+.form-registro input[type="text"]:focus,
+.form-registro input[type="email"]:focus,
+.form-registro input[type="password"]:focus,
+.form-registro input[type="number"]:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(22, 74, 152, 0.1);
+    background-color: white;
+}
+
+.form-registro button {
+    background-color: var(--azul);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s;
+    font-family: inherit;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+.form-registro button:hover {
+    background-color: var(--celesteOscuro);
+    transform: translateY(-2px);
+}
+
+.form-registro button:active {
+    transform: translateY(0);
+}
+
+.form-registro fieldset {
+    border: 2px solid var(--celeste);
+    border-radius: 12px;
+    padding: 20px 20px 10px 20px;
+    margin: 20px 0;
+}
+
+.form-registro legend {
+    font-weight: bold;
+    color: var(--azul);
+    padding: 0;
+    width: auto;
+    border-bottom: none;
+}
+
+/* Personalizar el modal de SweetAlert2: .swal2-success .swal2-error .swal2-warning  .swal2-info .swal2-question */
+.swal2-icon.swal2-warning {
+    border-color: var(--fuscia);
+    /* Color del borde */
+    color: var(--fuscia);
+    /* Color del icono */
+}
+
+.swal2-confirm {
+    background-color: var(--fuscia);
+}
+
+.swal2-confirm:hover {
+    background-color: var(--fuscia);
+    box-shadow: 0 4px 8px rgba(192, 31, 102, 0.3) !important;
+}
+
+.tarjeta-empleado {
+    border: 1px solid var(--azul);
+    border-radius: 10px;
+    box-shadow: 0 2px 6px var(--gris);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-empleado:hover {
+    box-shadow: 0 6px 12px var(--azul);
+}
